@@ -16,6 +16,18 @@ load("@rules_scala_annex//rules/scala:workspace.bzl", "scala_register_toolchains
 scala_repositories()
 scala_register_toolchains()
 
+http_archive(
+    name = "compiler_bridge",
+    build_file_content = """
+filegroup(
+    name = "src",
+    srcs = glob(["**/*.scala", "**/*.java"]),
+    visibility = ["//visibility:public"]
+)""",
+    sha256 = "d7a5dbc384c2c86479b30539cef911c256b7b3861ced68699b116e05b9357c9b",
+    url = "http://central.maven.org/maven2/org/scala-sbt/compiler-bridge_2.11/1.2.1/compiler-bridge_2.11-1.2.1-sources.jar",
+)
+
 skylib_version = "8cecf885c8bf4c51e82fd6b50b9dd68d2c98f757"  # update this as needed
 http_archive(
     name = "bazel_skylib",

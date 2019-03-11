@@ -13,21 +13,23 @@ def twirl_repositories():
             dep["import_args"].pop("exports")
         java_import_external(**dep["import_args"])
 
+    scala_version = "2.12.4"
+
     jvm_maven_import_external(
         name = "twirl_scala_scala_compiler",
-        artifact = "org.scala-lang:scala-compiler:2.12.4",
+        artifact = "org.scala-lang:scala-compiler:" + scala_version,
         licenses = ["notice"],
         server_urls = ["http://central.maven.org/maven2"],
     )
     jvm_maven_import_external(
         name = "twirl_scala_scala_library",
-        artifact = "org.scala-lang:scala-library:2.12.4",
+        artifact = "org.scala-lang:scala-library:" + scala_version,
         licenses = ["notice"],
         server_urls = ["http://central.maven.org/maven2"],
     )
     jvm_maven_import_external(
         name = "twirl_scala_scala_reflect",
-        artifact = "org.scala-lang:scala-reflect:2.12.4",
+        artifact = "org.scala-lang:scala-reflect:" + scala_version,
         licenses = ["notice"],
         server_urls = ["http://central.maven.org/maven2"],
     )
