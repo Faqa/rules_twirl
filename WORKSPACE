@@ -1,17 +1,40 @@
 workspace(name = "io_bazel_rules_twirl")
 
 rules_scala_annex_version = "7d053fc1be463e79c5e9e35d2123b1759cfd16e8" # update this as needed
-http_archive(
+# http_archive(
+#     name = "rules_scala_annex",
+#     sha256 = "ad0a269ba6965d2321a81331ac065d4603e62576c9d3c6f65b8c9c3a709b8536",
+#     strip_prefix = "rules_scala_annex-%s" % rules_scala_annex_version,
+#     url = "https://github.com/andyscott/rules_scala_annex/archive/%s.zip" % rules_scala_annex_version,
+# )
+local_repository(
     name = "rules_scala_annex",
-    sha256 = "ad0a269ba6965d2321a81331ac065d4603e62576c9d3c6f65b8c9c3a709b8536",
-    strip_prefix = "rules_scala_annex-%s" % rules_scala_annex_version,
-    url = "https://github.com/andyscott/rules_scala_annex/archive/%s.zip" % rules_scala_annex_version,
+    path = "/home/borkaehw/Desktop/code/rules_scala_annex",
 )
 
-load("@rules_scala_annex//rules/scala:workspace.bzl", "scala_register_toolchains", "scala_repository", "scala_repositories")
+load("@rules_scala_annex//rules/scala:workspace.bzl", "scala_register_toolchains", "scala_repositories")
 scala_repositories()
 scala_register_toolchains()
-scala_repository("scala", ("org.scala-lang", "2.11.12"), "@compiler_bridge_2_11//:src")
+
+load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
+jvm_maven_import_external(
+    name = "twirl_scala_scala_compiler",
+    artifact = "org.scala-lang:scala-compiler:2.11.12",
+    licenses = ["notice"],
+    server_urls = ["http://central.maven.org/maven2"],
+)
+jvm_maven_import_external(
+    name = "twirl_scala_scala_library",
+    artifact = "org.scala-lang:scala-library:2.11.12",
+    licenses = ["notice"],
+    server_urls = ["http://central.maven.org/maven2"],
+)
+jvm_maven_import_external(
+    name = "twirl_scala_scala_reflect",
+    artifact = "org.scala-lang:scala-reflect:2.11.12",
+    licenses = ["notice"],
+    server_urls = ["http://central.maven.org/maven2"],
+)
 
 skylib_version = "8cecf885c8bf4c51e82fd6b50b9dd68d2c98f757"  # update this as needed
 http_archive(
