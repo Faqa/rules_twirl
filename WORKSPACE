@@ -1,17 +1,19 @@
 workspace(name = "io_bazel_rules_twirl")
 
-rules_scala_annex_version = "7d053fc1be463e79c5e9e35d2123b1759cfd16e8" # update this as needed
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+rules_scala_annex_version = "e2f1e30a0a6972d2f70b82a5c1221cced19c8fd8"
 http_archive(
     name = "rules_scala_annex",
-    sha256 = "ad0a269ba6965d2321a81331ac065d4603e62576c9d3c6f65b8c9c3a709b8536",
-    strip_prefix = "rules_scala_annex-%s" % rules_scala_annex_version,
-    url = "https://github.com/andyscott/rules_scala_annex/archive/%s.zip" % rules_scala_annex_version,
+    sha256 = "9e268b9322fe4d63583824060f30365964a2928d44456761cbaf965f2bd25615",
+    strip_prefix = "rules_scala-{}".format(rules_scala_annex_version),
+    type = "zip",
+    url = "https://github.com/higherkindness/rules_scala/archive/{}.zip".format(rules_scala_annex_version),
 )
 
-load("@rules_scala_annex//rules/scala:workspace.bzl", "scala_register_toolchains", "scala_repository", "scala_repositories")
+load("@rules_scala_annex//rules/scala:workspace.bzl", "scala_register_toolchains", "scala_repositories")
 scala_repositories()
 scala_register_toolchains()
-scala_repository("scala", ("org.scala-lang", "2.11.12"), "@compiler_bridge_2_11//:src")
 
 skylib_version = "8cecf885c8bf4c51e82fd6b50b9dd68d2c98f757"  # update this as needed
 http_archive(
