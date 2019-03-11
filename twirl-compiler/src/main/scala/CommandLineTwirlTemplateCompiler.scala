@@ -13,7 +13,7 @@ object CommandLineTwirlTemplateCompiler extends WorkerMain[Unit] {
     source: File = new File("."),
     sourceDirectory: File = new File("."),
     templateFormats: Map[String, String] = Map.empty[String, String],
-    output: File = new File("."),
+    output: File = new File(".")
   )
 
   val parser = new scopt.OptionParser[Config]("scopt") {
