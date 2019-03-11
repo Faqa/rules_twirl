@@ -1,7 +1,7 @@
 # Do not edit. bazel-deps autogenerates this file from test-dependencies.yml.
 java_import_external = None
 scala_import_external = None
-#def list_dependencies():
+def list_dependencies():
     return [
         {
             "bind_args": {
