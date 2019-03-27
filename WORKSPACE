@@ -2,10 +2,10 @@ workspace(name = "io_bazel_rules_twirl")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-rules_scala_annex_version = "e2f1e30a0a6972d2f70b82a5c1221cced19c8fd8"
+rules_scala_annex_version = "622f2c1ac27bfa200ea2a1232f1bb670908e2f1a"
 http_archive(
     name = "rules_scala_annex",
-    sha256 = "9e268b9322fe4d63583824060f30365964a2928d44456761cbaf965f2bd25615",
+    sha256 = "dabc4bf143b24b97a95f853d861707c48b8a73a8e2847774da48aef9d6b7b6c1",
     strip_prefix = "rules_scala-{}".format(rules_scala_annex_version),
     type = "zip",
     url = "https://github.com/higherkindness/rules_scala/archive/{}.zip".format(rules_scala_annex_version),
