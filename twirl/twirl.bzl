@@ -94,7 +94,7 @@ The default formats are
 ```
 """
     ),
-    "_twirl_compiler": attr.label(
+    "twirl_compiler": attr.label(
       executable = True,
       cfg = "host",
       allow_files = True,
