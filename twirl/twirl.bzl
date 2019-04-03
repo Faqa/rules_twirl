@@ -51,7 +51,7 @@ def _impl(ctx):
       mnemonic = "TwirlCompile",
       execution_requirements = {"supports-workers": "1"},
       progress_message = "Compiling twirl template",
-      executable = ctx.executable._twirl_compiler,
+      executable = ctx.executable.twirl_compiler,
     )
 
     outputs.append(output)
